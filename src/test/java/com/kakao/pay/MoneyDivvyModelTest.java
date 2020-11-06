@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class MoneyDivvyTest {
+public class MoneyDivvyModelTest {
 
     MoneyDivvy moneyDivvy;
 
