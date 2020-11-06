@@ -1,6 +1,6 @@
 package com.kakao.pay;
 
-import com.kakao.pay.divvy.model.*;
+import com.kakao.pay.divvy.model.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +21,6 @@ public class MoneyDivvyTest {
                 System.currentTimeMillis() - 1000,
                 System.currentTimeMillis() + 1000
         );
-
     }
 
     @Test

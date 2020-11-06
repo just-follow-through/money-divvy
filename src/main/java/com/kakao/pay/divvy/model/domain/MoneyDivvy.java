@@ -1,4 +1,4 @@
-package com.kakao.pay.divvy.model;
+package com.kakao.pay.divvy.model.domain;
 
 import java.util.HashMap;
 import java.util.Map;

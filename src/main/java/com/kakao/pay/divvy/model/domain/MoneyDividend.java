@@ -1,4 +1,4 @@
-package com.kakao.pay.divvy.model;
+package com.kakao.pay.divvy.model.domain;
 
 public class MoneyDividend {
 
