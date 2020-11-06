@@ -1,32 +1,45 @@
 package com.kakao.pay.divvy.model.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.kakao.pay.divvy.model.domain.token.ReceivableToken;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-public class MoneyDivvy {
+@Getter
+@AllArgsConstructor
+public class MoneyDivvy{
+
+    ReceivableToken token;
 
     ChattingRoom chattingRoom;
     User owner;
+
+    int amountOfMoney;
+    int numOfReceivers;
+
     Long createdAt;
     Long expiredAt;
-    Map<User, MoneyDividend> receivedUser;
+
+    @Setter
+    MoneyDividends moneyDividends;
 
     public MoneyDivvy(
-            User owner,
+            ReceivableToken token,
             ChattingRoom chattingRoom,
+            User owner,
+            int amountOfMoney,
+            int numOfReceivers,
             Long createdAt,
             Long expiredAt
     ) {
 
-        this.owner = owner;
+        this.token = token;
         this.chattingRoom = chattingRoom;
+        this.owner = owner;
+        this.amountOfMoney = amountOfMoney;
+        this.numOfReceivers = numOfReceivers;
         this.createdAt = createdAt;
         this.expiredAt = expiredAt;
-        this.receivedUser = new HashMap<>();
-    }
-
-    public MoneyDividend findAvailableOneDividend() {
-        return new MoneyDividend();
     }
 
     public boolean isTimeLimitExpired(Long requestAt) {
@@ -37,18 +50,27 @@ public class MoneyDivvy {
         return this.owner.equals(receiveUser);
     }
 
-    public boolean isReceivedUser(User receiveUser) {
-        return receivedUser.containsKey(receiveUser);
-    }
-
     public boolean isInTheSameRoom(ChattingRoom room) {
         return this.chattingRoom.equals(room);
     }
 
-    public void assign(User receiveUser, MoneyDividend moneyDividend) {
-        receivedUser.put(receiveUser, moneyDividend);
+    public String toString() {
+        return String.format(
+                new StringBuilder()
+                        .append("%s\n")
+                        .append("%s\n")
+                        .append("%s\n")
+                        .append("%d\n")
+                        .append("%d\n")
+                        .append("%s\n")
+                .toString(),
+                token,
+                chattingRoom,
+                owner,
+                amountOfMoney,
+                numOfReceivers,
+                moneyDividends
+        );
     }
-
-
 
 }

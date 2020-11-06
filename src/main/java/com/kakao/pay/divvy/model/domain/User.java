@@ -1,5 +1,8 @@
 package com.kakao.pay.divvy.model.domain;
 
+import lombok.Getter;
+
+@Getter
 public class User {
 
     private String userId;
@@ -17,6 +20,11 @@ public class User {
     @Override
     public int hashCode() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("UserId[%s]", userId);
     }
 
 }

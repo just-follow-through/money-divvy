@@ -1,8 +1,19 @@
-package com.kakao.pay.divvy.model.domain;
+package com.kakao.pay.divvy.model.domain.token;
 
-public class AsciiCharRandomGenerator{
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-    public static ReceivableToken generate(int keySize) {
+@Component
+@AllArgsConstructor
+@NoArgsConstructor
+public class AsciiCharRandomTokenGenerator implements TokenGenerator {
+
+    @Value("3")
+    private int keySize;
+
+    public ReceivableToken generate() {
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String digit = "0123456789";
@@ -22,5 +33,4 @@ public class AsciiCharRandomGenerator{
         }
         return new ReceivableToken(result.toString());
     }
-
 }

@@ -1,19 +1,17 @@
-package com.kakao.pay.divvy.model.domain;
+package com.kakao.pay.divvy.model.domain.token;
 
-public class ReceivableToken {
+import java.io.Serializable;
+
+public class ReceivableToken implements Serializable {
 
     private String key;
 
-    ReceivableToken(String key) {
+    public ReceivableToken(String key) {
         this.key = key;
     }
 
     public int length() {
         return key.length();
-    }
-
-    public static ReceivableToken generate(int keySize) {
-        return AsciiCharRandomGenerator.generate(keySize);
     }
 
     @Override
