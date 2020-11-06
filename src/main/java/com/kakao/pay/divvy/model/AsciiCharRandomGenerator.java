@@ -1,4 +1,4 @@
-package com.kakao.pay;
+package com.kakao.pay.divvy.model;
 
 public class AsciiCharRandomGenerator{
 

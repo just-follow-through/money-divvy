@@ -1,5 +1,6 @@
 package com.kakao.pay;
 
+import com.kakao.pay.divvy.model.*;
 import org.junit.Before;
 import org.junit.Test;
 

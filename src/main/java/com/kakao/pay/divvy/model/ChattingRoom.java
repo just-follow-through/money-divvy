@@ -1,10 +1,10 @@
-package com.kakao.pay;
+package com.kakao.pay.divvy.model;
 
 public class ChattingRoom {
 
     String roomId;
 
-    ChattingRoom(String roomId){
+    public ChattingRoom(String roomId){
 
         this.roomId = roomId;
     }
