@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class MoneyDivvy{
@@ -52,6 +54,18 @@ public class MoneyDivvy{
 
     public boolean isInTheSameRoom(ChattingRoom room) {
         return this.chattingRoom.equals(room);
+    }
+
+    public boolean isReceivedUser(User receiveUser) {
+        return this.moneyDividends.isReceivedUser(receiveUser);
+    }
+
+    public MoneyDividend assign(User receiveUser) {
+        return this.moneyDividends.assign(receiveUser);
+    }
+
+    public List<MoneyDividend> findReceivedItems() {
+        return this.moneyDividends.findReceivedItems();
     }
 
     public String toString() {

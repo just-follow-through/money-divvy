@@ -1,9 +1,12 @@
 package com.kakao.pay.divvy.model.domain;
 
+import com.kakao.pay.divvy.utils.JsonSerializable;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-public class User {
+@NoArgsConstructor
+public class User implements JsonSerializable {
 
     private String userId;
 

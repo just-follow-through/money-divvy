@@ -2,8 +2,10 @@ package com.kakao.pay.divvy.model.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class MoneyDividend implements ValueObject{
 
@@ -21,7 +23,7 @@ public class MoneyDividend implements ValueObject{
 
     public MoneyDividend(int amountOfMoney) {
         this.amountOfMoney = amountOfMoney;
-        this.available = false;
+        this.available = true;
         this.assignedUser = null;
         this.assignAt = -1L;
     }

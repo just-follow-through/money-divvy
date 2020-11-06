@@ -1,8 +1,10 @@
 package com.kakao.pay.divvy.model.domain.token;
 
-import java.io.Serializable;
+import com.kakao.pay.divvy.utils.JsonSerializable;
+import lombok.Getter;
 
-public class ReceivableToken implements Serializable {
+@Getter
+public class ReceivableToken implements JsonSerializable {
 
     private String key;
 

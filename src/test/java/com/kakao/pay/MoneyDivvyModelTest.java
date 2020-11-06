@@ -9,7 +9,6 @@ import com.kakao.pay.divvy.model.domain.token.TokenGenerator;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +22,13 @@ public class MoneyDivvyModelTest {
 
     TokenGenerator tokenGenerator;
 
+    MoneyRouter moneyRouter;
+
     @Before
     public void setUp() {
         tokenGenerator = new AsciiCharRandomTokenGenerator(3);
+
+        moneyRouter = new MoneyEquallyRouter();
 
         moneyDivvy = new MoneyDivvy(
                 tokenGenerator.generate(),
@@ -36,7 +39,7 @@ public class MoneyDivvyModelTest {
                 System.currentTimeMillis() + 1000
         );
 
-        moneyDivvy.setMoneyDividends(new MoneyDividends(new ArrayList<>()));
+        moneyDivvy.setMoneyDividends(moneyRouter.divide(10000, 2));
 
     }
 
@@ -125,6 +128,25 @@ public class MoneyDivvyModelTest {
         assertEquals(3, receivableToken.length());
     }
 
+    @Test
+    public void testFindAvailableOneDividend() {
+
+        MoneyDividend moneyDividend = moneyDivvy.getMoneyDividends().findAvailableOneDividend();
+
+        assertTrue(moneyDividend.isAvailable());
+    }
+
+    @Test
+    public void testCheckAlreadyReceivedUser() {
+
+        User userBeta = new User("B");
+        assertFalse(moneyDivvy.getMoneyDividends().isReceivedUser(userBeta));
+
+        User userGray = new User("G");
+        moneyDivvy.getMoneyDividends().assign(userGray);
+        assertTrue(moneyDivvy.getMoneyDividends().isReceivedUser(userGray));
+
+    }
 
     @Test
     public void testCheckDivvyOwnerUser() {

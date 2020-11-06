@@ -21,7 +21,7 @@ public class MoneyDivvyService {
 
     private MoneyDivvyStore moneyDivvyStore;
 
-    @Value("1000")
+    @Value("600000")
     private int expiredTime;
 
     public MoneyDivvyService (
@@ -52,8 +52,6 @@ public class MoneyDivvyService {
                 moneyDivvy.getAmountOfMoney(),
                 moneyDivvy.getNumOfReceivers()
         );
-
-        System.out.println(moneyDividends);
 
         moneyDivvy.setMoneyDividends(moneyDividends);
 
